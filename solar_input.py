@@ -25,6 +25,10 @@ def read_space_objects_data_from_file(input_filename):
                 objects.append(star)
             else:
                 print("Unknown space object")
+            if object_type == 'planet':
+                planet = Planet()
+                parse_planet_parameters(line, planet)
+                objects.append(planet)
 
     return objects
 
@@ -43,8 +47,16 @@ def parse_star_parameters(line, star):
     **line** — строка с описание звезды.
     **star** — объект звезды.
     """
+    param = []
+    param = line.split(' ')
+    star.R = param[1]
+    star.color = param[2]
+    star.m = param[3]
+    star.x = param[4]
+    star.y = param[5]
+    star.Vx = param[6]
+    star.Vy = param[7]
 
-    pass  # FIXME: not done yet
 
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
@@ -61,7 +73,15 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
-    pass  # FIXME: not done yet...
+    param = []
+    param = line.split(' ')
+    planet.R = param[1]
+    planet.color = param[2]
+    planet.m = param[3]
+    planet.x = param[4]
+    planet.y = param[5]
+    planet.Vx = param[6]
+    planet.Vy = param[7]
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
